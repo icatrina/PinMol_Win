@@ -337,7 +337,7 @@ if __name__ == "__main__":
     with open(mb_userpath+'\\usetxtfile.txt', 'r') as infile, open(mb_userpath+'\\mb_tocsv.csv', 'w') as csv_file:
         next(infile)
         reader = csv.reader(infile, delimiter = ' ')
-        writer = csv.writer(csv_file, delimiter = ",", lineterminator = '\n')
+        writer = csv.writer(csv_file, delimiter = ',', lineterminator = '\n')
         writer.writerows(reader)
         
     os.remove(mb_userpath+'\\usetxtfile.txt')
@@ -479,7 +479,7 @@ if __name__ == "__main__":
             rows = zip(base_no, probe_seq, sscntl )
             for row in rows:
                 writer.writerow(row)
-        mb_pick = pd.read_csv(mb_userpath+'/blast_results_picks.csv', sep=',', usecols=[0,1])
+        mb_pick = pd.read_csv(mb_userpath+'\\blast_results_picks.csv', sep=',', usecols=[0,1])
         mb_pick.to_csv(mb_userpath+'\\mb_picks.csv', index=False, header = False)
     
 
@@ -575,11 +575,7 @@ if __name__ == "__main__":
     print("\n"+"If no SVG files are found, increase the number of probes and/or target region!")
     #remove intermediate files
     
-    #os.remove(mb_userpath+'/grk'+'_'+str(probe)+'_50_'+str(mb_so)+'so'+'/Full_List_sorted.csv')
-    #os.remove(mb_userpath+'/grk'+'_'+str(probe)+'_50_'+str(mb_so)+'so'+'/filter1.csv')
-    #os.remove(mb_userpath+'/grk'+'_'+str(probe)+'_50_'+str(mb_so)+'so'+'/sortedout.csv')
     os.remove(mb_userpath+'\\sortedoutby3.csv')
     os.remove(mb_userpath+'\\ss_strcnt.csv')
     os.remove(mb_userpath+'\\mb_picks.csv')
-    os.remove(mb_userpath+'\\blast_results.csv')
     os.remove(mb_userpath+'\\blast_results_picks.csv')
