@@ -453,7 +453,7 @@ if __name__ == "__main__":
     blast_opt = input('Do you want to perform blast? y/n: ')
     
     if blast_opt == 'n':    
-        with open (mb_userpath+'/eg_sorted2.csv') as f3:
+        with open (mb_userpath+'\\eg_sorted2.csv') as f3:
             dl = [[],[],[]]
             reader = csv.reader(f3)
             for row in reader:
@@ -462,7 +462,7 @@ if __name__ == "__main__":
         base_no = dl[0]
         sscntl = dl[2]
         
-        with open(mb_userpath+'/forblast.csv', 'r') as f1:
+        with open(mb_userpath+'\\forblast.csv', 'r') as f1:
             cl =[[]]
             reader = csv.reader(f1)
             for row in reader:
@@ -470,17 +470,17 @@ if __name__ == "__main__":
                     cl[col].append(row[col])
         probe_seq = cl[0]    
     
-        os.remove(mb_userpath+'/forblast.csv')
-        os.remove(mb_userpath+'/eg_sorted2.csv')
+        os.remove(mb_userpath+'\\forblast.csv')
+        os.remove(mb_userpath+'\\eg_sorted2.csv')
     
-        with open (mb_userpath+'/blast_results_picks.csv', 'w') as output2:
+        with open (mb_userpath+'\\blast_results_picks.csv', 'w') as output2:
             writer = csv.writer(output2)
             writer.writerow(["Base Number","Probe Sequence", "ss-count fraction"])
             rows = zip(base_no, probe_seq, sscntl )
             for row in rows:
                 writer.writerow(row)
         mb_pick = pd.read_csv(mb_userpath+'/blast_results_picks.csv', sep=',', usecols=[0,1])
-        mb_pick.to_csv(mb_userpath+'/mb_picks.csv', index=False, header = False)
+        mb_pick.to_csv(mb_userpath+'\\mb_picks.csv', index=False, header = False)
     
 
     elif blast_opt == 'y':
@@ -491,14 +491,14 @@ if __name__ == "__main__":
         assert query1[0] == str2, "The first query is not the same as the first sequence in the blast_picks.fasta file" #check if the correct file was used for blast
         assert query1[-1] in str4, "The last query is not contained in the last sequence in the blast_picks.fasta file" #check if the correct file was used for blast
     
-        df = pd.read_csv(mb_userpath+'/blast_results.csv', sep = ",", index_col = None, engine = 'python')
+        df = pd.read_csv(mb_userpath+'\\blast_results.csv', sep = ",", index_col = None, engine = 'python')
         df_grouped = df.groupby(['Pick#']).agg({'Positives':'max'})
         df_grouped = df_grouped.reset_index()
         df = pd.merge(df, df_grouped, how='left', on=['Pick#'])
         a = pd.DataFrame(df_grouped)
-        a.to_csv(mb_userpath+'/top_mb_picks.csv', index=False)
+        a.to_csv(mb_userpath+'\\top_mb_picks.csv', index=False)
     
-        with open(mb_userpath+'/top_mb_picks.csv') as f: #extract the information for final output from other files
+        with open(mb_userpath+'\\top_mb_picks.csv') as f: #extract the information for final output from other files
             bl = [[],[],[]]
             reader = csv.reader(f)
             next(f)
@@ -508,7 +508,7 @@ if __name__ == "__main__":
         pick_no =bl[0]
         positives =bl[1]
     
-        with open (mb_userpath+'/eg_sorted2.csv') as f3:
+        with open (mb_userpath+'\\eg_sorted2.csv') as f3:
             dl = [[],[],[]]
             reader = csv.reader(f3)
             for row in reader:
@@ -517,7 +517,7 @@ if __name__ == "__main__":
         base_no = dl[0]
         sscntl = dl[2]
     
-        with open(mb_userpath+'/forblast.csv', 'r') as f1:
+        with open(mb_userpath+'\\forblast.csv', 'r') as f1:
             cl =[[]]
             reader = csv.reader(f1)
             for row in reader:
@@ -525,26 +525,26 @@ if __name__ == "__main__":
                     cl[col].append(row[col])
         probe_seq = cl[0]
     
-        os.remove(mb_userpath+'/top_mb_picks.csv')
-        os.remove(mb_userpath+'/forblast.csv')
-        os.remove(mb_userpath+'/eg_sorted2.csv')
-        os.remove(mb_userpath+'/blast_results.csv')
+        os.remove(mb_userpath+'\\top_mb_picks.csv')
+        os.remove(mb_userpath+'\\forblast.csv')
+        os.remove(mb_userpath+'\\eg_sorted2.csv')
+        os.remove(mb_userpath+'\\blast_results.csv')
     
-        with open (mb_userpath+'/blast_results_picks.csv', 'w') as output2:
+        with open (mb_userpath+'\\blast_results_picks.csv', 'w') as output2:
             writer = csv.writer(output2)
             writer.writerow(["Pick#", "Base Number","Positives","Probe Sequence", "ss-count fraction"])
             rows = zip(pick_no, base_no, positives, probe_seq, sscntl )
             for row in rows:
                 writer.writerow(row)
     
-        df = pd.read_csv(mb_userpath+'/blast_results_picks.csv')
+        df = pd.read_csv(mb_userpath+'\\blast_results_picks.csv')
         for row in df:
             df = df.sort_values(['Positives', 'Pick#'], ascending=[True, True])
-            df.to_csv(mb_userpath+'/Picks_Sorted.csv', index=False)
+            df.to_csv(mb_userpath+'\\Picks_Sorted.csv', index=False)
     
     
-        mb_pick = pd.read_csv(mb_userpath+'/Picks_Sorted.csv', sep=',', usecols=[1,3])
-        mb_pick.to_csv(mb_userpath+'/mb_picks.csv', index=False, header = False)
+        mb_pick = pd.read_csv(mb_userpath+'\\Picks_Sorted.csv', sep=',', usecols=[1,3])
+        mb_pick.to_csv(mb_userpath+'\\mb_picks.csv', index=False, header = False)
     
         
     i = stemDesign() #design the stem for the molecular beacon
