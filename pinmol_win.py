@@ -8,7 +8,7 @@ import subprocess
 from Bio.Blast import NCBIXML
 print("\n"*5)
 print('PinMol  Copyright (C) 2017  Irina E. Catrina' + '\n'+
-'This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.' + '\n'+
+'This program comes with ABSOLUTELY NO WARRANTY; for details type' + '\`'+'show w'+'\'' + '\n'+
 'This is free software, and you are welcome to redistribute it' + '\n'+
 'under certain conditions; type' + '\`'+'show c'+'\''+ 'for details.'+ '\n')
 undscr = "->"*30
