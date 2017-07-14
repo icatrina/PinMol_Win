@@ -1,6 +1,6 @@
 Requirements for running PinMol on Win:
 
-1. You need Python 3.x
+1. You need Python 3.x (with pandas and Biopython)
 
 2. You need RNAstructure text interface (you must register to access download):
     http://rna.urmc.rochester.edu/RNAstructure.html
@@ -18,6 +18,6 @@ Variable Value = [Path for RNAstructure folder]\data_tables
 "C:\Users\MyAccount\Desktop\RNAstructure\exe"
 
 4. Open a terminal window, go into the PinMol directory and run:
-$ python pinmol.py
+$ python pinmol_win.py
 
 #for additional help email icatrina@hunter.cuny.edu
