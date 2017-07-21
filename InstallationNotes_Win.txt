@@ -18,6 +18,6 @@ Variable Value = [Path for RNAstructure folder]\data_tables
 "C:\Users\MyAccount\Desktop\RNAstructure\exe"
 
 4. Open a terminal window, go into the PinMol directory and run:
-$ python3 pinmol_win.py
+> C:\[path for python v3.x.x]\python.exe C:\[path for pinmol_win]\pinmol_win.py
 
 #for additional help email iecatrina@gmail.com
